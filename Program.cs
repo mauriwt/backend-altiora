@@ -40,6 +40,8 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<AltioraDb>();
+        context.Database.Migrate();
+
         DatoInicial.Initialize(context);
     }
     catch (Exception ex)
